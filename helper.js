@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const defaultLang = "es";
+    const sections = document.querySelectorAll(`[data-lang]`);
+
+    sections.forEach(section => {
+        if (section.getAttribute("data-lang") === defaultLang) {
+            section.style.display = "block";
+        } else {
+            section.style.display = "none";
+        }
+    });
+
+    switchLanguage();
+});
+
+window.onload = function() {
+    switchLanguage();
+};
+
 function switchLanguage() {
     const selectedLanguage = document.getElementById('language-select').value;
     const sections = document.querySelectorAll('section[data-lang]');
@@ -13,8 +32,7 @@ function switchLanguage() {
 
 function toggleMobileMenu() {
     const nav = document.querySelector('header nav ul');
-    nav.classList.toggle('open'); // Toggle the 'open' class for mobile menu
+    nav.classList.toggle('open');
 }
 
-// Attach event listener to a menu button (assumes a button with id 'menu-btn' exists)
 document.getElementById('menu-btn').addEventListener('click', toggleMobileMenu);
